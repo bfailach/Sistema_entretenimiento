@@ -1,0 +1,163 @@
+package sistema_entretenimiento;
+
+import java.util.Scanner;
+
+interface Juego {
+    void modoDeJuego();
+
+    void guardarProceso();
+
+    void cargarProceso();
+}
+
+class Fornite implements Juego {
+    @Override
+    public void modoDeJuego() {
+        System.out.println("Seleccionando zero build o normal");
+    }
+
+    @Override
+    public void guardarProceso() {
+        System.out.println("Guardando salvar al mundo");
+    }
+
+    @Override
+    public void cargarProceso() {
+        System.out.println("Elegiendo partida guardada");
+    }
+}
+
+class GtaVI implements Juego {
+    @Override
+    public void modoDeJuego() {
+        System.out.println("Seleccionando modo historia u online");
+    }
+
+    @Override
+    public void guardarProceso() {
+        System.out.println("Guardando partida GTA");
+    }
+
+    @Override
+    public void cargarProceso() {
+        System.out.println("Elegiendo partida guardada GTA");
+    }
+}
+
+class MarioKart implements Juego {
+    @Override
+    public void modoDeJuego() {
+        System.out.println("Seleccionando circuito o batalla");
+    }
+
+    @Override
+    public void guardarProceso() {
+        System.out.println("Guardando progreso en MarioKart");
+    }
+
+    @Override
+    public void cargarProceso() {
+        System.out.println("Cargando partida en MarioKart");
+    }
+}
+
+class FIFA implements Juego {
+    @Override
+    public void modoDeJuego() {
+        System.out.println("Seleccionando modo partido o carrera");
+    }
+
+    @Override
+    public void guardarProceso() {
+        System.out.println("Guardando progreso en FIFA");
+    }
+
+    @Override
+    public void cargarProceso() {
+        System.out.println("Cargando partida en FIFA");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner read = new Scanner(System.in);
+
+        Juego fornite = new Fornite();
+        Juego gtaVI = new GtaVI();
+        Juego marioKart = new MarioKart();
+        Juego fifa = new FIFA();
+
+        boolean salir = false;
+        while (!salir) {
+            System.out.println("Elegir juego");
+            System.out.println("1. Fornite");
+            System.out.println("2. Gta VI");
+            System.out.println("3. MarioKart");
+            System.out.println("4. FIFA");
+            System.out.println("5. Salir");
+
+            int opcion = read.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    ejecutarJuego(fornite);
+                    break;
+
+                case 2:
+                    ejecutarJuego(gtaVI);
+                    break;
+
+                case 3:
+                    ejecutarJuego(marioKart);
+                    break;
+
+                case 4:
+                    ejecutarJuego(fifa);
+                    break;
+
+                case 5:
+                    System.out.println("Saliendo...");
+                    salir = true;
+                    break;
+
+                default:
+                    System.out.println("Opción inválida");
+                    break;
+            }
+        }
+    }
+
+    private static void ejecutarJuego(Juego juego) {
+        Scanner read = new Scanner(System.in);
+
+        System.out.println("Selecciona una opción:");
+        System.out.println("1. Modo de juego");
+        System.out.println("2. Guardar");
+        System.out.println("3. Cargar");
+
+        int opcion = read.nextInt();
+
+        switch (opcion) {
+            case 1:
+                juego.modoDeJuego();
+                break;
+
+            case 2:
+                juego.guardarProceso();
+                break;
+
+            case 3:
+                juego.cargarProceso();
+                break;
+
+            default:
+                System.out.println("Opción inválida");
+                break;
+        }
+    }
+}
+
+
+
+
+
